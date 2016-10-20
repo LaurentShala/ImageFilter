@@ -312,6 +312,7 @@
 				F62687921DB1B891000D5499 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

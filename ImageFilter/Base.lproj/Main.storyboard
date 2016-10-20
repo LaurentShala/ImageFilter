@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eCd-qR-eng">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Filter App-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImageFilter" customModuleProvider="target" sceneMemberID="viewController">
@@ -42,7 +42,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="applyFilterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ii4-vg-0Fc"/>
+                                    <action selector="applyFilterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0YP-RL-YHG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -55,16 +55,42 @@
                             <constraint firstAttribute="trailing" secondItem="lLI-Ly-CMq" secondAttribute="trailing" id="Urb-pJ-ZcC"/>
                             <constraint firstAttribute="trailing" secondItem="Hec-kr-JHm" secondAttribute="trailing" id="ZyY-dQ-8cZ"/>
                             <constraint firstItem="Wnx-6U-ylK" firstAttribute="top" secondItem="Hec-kr-JHm" secondAttribute="bottom" id="aMH-Cu-v4O"/>
+                            <constraint firstItem="lLI-Ly-CMq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="duk-FH-aS4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Wnx-6U-ylK" secondAttribute="bottom" id="eAJ-Ni-Zvf"/>
                             <constraint firstItem="Hec-kr-JHm" firstAttribute="top" secondItem="lLI-Ly-CMq" secondAttribute="bottom" id="hNQ-WJ-SLI"/>
-                            <constraint firstItem="lLI-Ly-CMq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="zej-nn-Sph"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Filter App" id="Hkt-T5-YVs">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Un0-hb-LAP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="lRu-L3-gao">
+                            <connections>
+                                <action selector="saveImageBarButton:" destination="BYZ-38-t0r" id="dx8-hL-I1B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="photoImageView" destination="lLI-Ly-CMq" id="MDn-gH-c56"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056.8" y="123.68815592203899"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6jP-uv-lqe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eCd-qR-eng" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CTA-QV-4Ix">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="obd-YI-aDo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cbs-1f-3ua" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
