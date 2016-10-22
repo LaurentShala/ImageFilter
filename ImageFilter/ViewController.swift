@@ -49,7 +49,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         if let filter = CIFilter(name: "CICrystallize") {
             filter.setValue(inputCIImage, forKey: kCIInputImageKey)
-            filter.setValue(55, forKey: kCIInputRadiusKey)
+            filter.setValue(20, forKey: kCIInputRadiusKey)
             
             if let output = filter.outputImage {
                 if let cgimg = context.createCGImage(output, from: output.extent) {
@@ -61,15 +61,53 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         return UIImage()
     }
     
-    @IBAction func saveImageBarButton(_ sender: UIBarButtonItem) {
+    
+    func saveToCameraRoll() {
         if let imageToBeSaved = photoImageView.image {
             UIImageWriteToSavedPhotosAlbum(imageToBeSaved, nil, nil, nil)
+            let alert = UIAlertController(title: "Saved!", message: "Image has been saved to camera roll", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay!", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Alert", message: "No image to save", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func cancelBarButton(_ sender: UIBarButtonItem) {
+        photoImageView.image = nil
+    }
+    
+    @IBAction func saveImageBarButton(_ sender: UIBarButtonItem) {
+        let saveOptions = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        
+        let saveToCameraRollAction = UIAlertAction(title: "Save to camera roll ", style: .default) { (alert: UIAlertAction) in
+            self.saveToCameraRoll()
+            print("SAVED TO CAMERA ROLL")
+        }
+        let saveToFireBaseAction = UIAlertAction(title: "Save to FireBase", style: .default) { (alert: UIAlertAction) in
+            print("SAVED TO FIREBASE")
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert: UIAlertAction) in
+            print("CANCELED")
+        }
+        saveOptions.addAction(saveToCameraRollAction)
+        saveOptions.addAction(saveToFireBaseAction)
+        saveOptions.addAction(cancelAction)
+        self.present(saveOptions, animated: true, completion: nil)
     }
     
    
     @IBAction func applyFilterButton(_ sender: UIButton) {
-        photoImageView.image = imageCrystallize(inputImage: photoImageView.image!)
+        if photoImageView.image != nil {
+            photoImageView.image = imageCrystallize(inputImage: photoImageView.image!)
+        } else {
+            let alert = UIAlertController(title: "Alert", message: "No image was selected", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            print("NOPE")
+        }
     }
     
     
@@ -80,11 +118,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = true
             imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-
             present(imagePicker, animated: true, completion: nil)
-
-            }
+        }
     }
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var chosenImage = UIImage()
@@ -93,9 +130,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.dismiss(animated: true, completion: nil);
     }
     
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

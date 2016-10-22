@@ -61,7 +61,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Filter App" id="Hkt-T5-YVs">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Un0-hb-LAP"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Un0-hb-LAP">
+                            <connections>
+                                <action selector="cancelBarButton:" destination="BYZ-38-t0r" id="jai-xQ-Fpo"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="lRu-L3-gao">
                             <connections>
                                 <action selector="saveImageBarButton:" destination="BYZ-38-t0r" id="dx8-hL-I1B"/>
