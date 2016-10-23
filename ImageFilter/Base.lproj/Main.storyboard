@@ -45,28 +45,41 @@
                                     <action selector="applyFilterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0YP-RL-YHG"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PuV-J9-Vbb">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="LgL-Sq-dbo"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="eFc-lT-h75" kind="embed" id="CuC-JK-5UY"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Hec-kr-JHm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0C7-5f-Co9"/>
                             <constraint firstItem="Wnx-6U-ylK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6ZP-HH-fb7"/>
+                            <constraint firstItem="PuV-J9-Vbb" firstAttribute="top" secondItem="lLI-Ly-CMq" secondAttribute="bottom" id="BTm-Ac-O0t"/>
                             <constraint firstItem="lLI-Ly-CMq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EHR-XY-uZS"/>
                             <constraint firstAttribute="trailing" secondItem="Wnx-6U-ylK" secondAttribute="trailing" id="EXl-ux-MV0"/>
                             <constraint firstAttribute="trailing" secondItem="lLI-Ly-CMq" secondAttribute="trailing" id="Urb-pJ-ZcC"/>
+                            <constraint firstItem="Hec-kr-JHm" firstAttribute="top" secondItem="PuV-J9-Vbb" secondAttribute="bottom" id="XVg-x4-sas"/>
                             <constraint firstAttribute="trailing" secondItem="Hec-kr-JHm" secondAttribute="trailing" id="ZyY-dQ-8cZ"/>
                             <constraint firstItem="Wnx-6U-ylK" firstAttribute="top" secondItem="Hec-kr-JHm" secondAttribute="bottom" id="aMH-Cu-v4O"/>
                             <constraint firstItem="lLI-Ly-CMq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="duk-FH-aS4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Wnx-6U-ylK" secondAttribute="bottom" id="eAJ-Ni-Zvf"/>
-                            <constraint firstItem="Hec-kr-JHm" firstAttribute="top" secondItem="lLI-Ly-CMq" secondAttribute="bottom" id="hNQ-WJ-SLI"/>
+                            <constraint firstAttribute="trailing" secondItem="PuV-J9-Vbb" secondAttribute="trailing" id="qUy-MT-f4o"/>
+                            <constraint firstItem="PuV-J9-Vbb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="s6F-5h-Gou"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Filter App" id="Hkt-T5-YVs">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Un0-hb-LAP">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancelBarButton:" destination="BYZ-38-t0r" id="jai-xQ-Fpo"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="lRu-L3-gao">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="saveImageBarButton:" destination="BYZ-38-t0r" id="dx8-hL-I1B"/>
                             </connections>
@@ -79,6 +92,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1056.8" y="123.68815592203899"/>
+        </scene>
+        <!--Filter Collection View Controller-->
+        <scene sceneID="Fbd-FH-SHy">
+            <objects>
+                <collectionViewController id="eFc-lT-h75" customClass="FilterCollectionViewController" customModule="ImageFilter" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="i05-nP-Tei">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vLv-zH-jHB">
+                            <size key="itemSize" width="64" height="64"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="gjT-jO-xvC">
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <color key="backgroundColor" red="1" green="0.080058916329999993" blue="0.1271477338" alpha="1" colorSpace="calibratedRGB"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="eFc-lT-h75" id="zDU-rs-My5"/>
+                            <outlet property="delegate" destination="eFc-lT-h75" id="YwC-Mv-1fo"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zkg-2I-X7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1788" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6jP-uv-lqe">

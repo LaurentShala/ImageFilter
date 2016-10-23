@@ -13,6 +13,7 @@
 		F62687891DB1B891000D5499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62687881DB1B891000D5499 /* Assets.xcassets */; };
 		F626878C1DB1B891000D5499 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F626878A1DB1B891000D5499 /* LaunchScreen.storyboard */; };
 		F62687951DB1C1E1000D5499 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F62687941DB1C1E1000D5499 /* Photos.framework */; };
+		F690B6711DBC60F800ACD44D /* FilterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F690B6701DBC60F800ACD44D /* FilterCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		F626878B1DB1B891000D5499 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F626878D1DB1B891000D5499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F62687941DB1C1E1000D5499 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		F690B6701DBC60F800ACD44D /* FilterCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				F62687811DB1B891000D5499 /* AppDelegate.swift */,
 				F62687831DB1B891000D5499 /* ViewController.swift */,
 				F62687851DB1B891000D5499 /* Main.storyboard */,
+				F690B6701DBC60F800ACD44D /* FilterCollectionViewController.swift */,
 				F62687881DB1B891000D5499 /* Assets.xcassets */,
 				F626878A1DB1B891000D5499 /* LaunchScreen.storyboard */,
 				F626878D1DB1B891000D5499 /* Info.plist */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F690B6711DBC60F800ACD44D /* FilterCollectionViewController.swift in Sources */,
 				F62687841DB1B891000D5499 /* ViewController.swift in Sources */,
 				F62687821DB1B891000D5499 /* AppDelegate.swift in Sources */,
 			);

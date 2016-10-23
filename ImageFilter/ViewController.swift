@@ -13,6 +13,47 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var photoImageView: UIImageView!
     
     
+    func imageSepina(inputImage: UIImage) ->UIImage {
+        
+        let context = CIContext(options: nil)
+        let inputCIImage = CIImage(image: inputImage)!
+        
+        if let filter = CIFilter(name: "CISepiaTone") {
+            filter.setValue(inputCIImage, forKey: kCIInputImageKey)
+            filter.setValue(0.8, forKey: kCIInputIntensityKey)
+            
+            if let output = filter.outputImage {
+                if let cgimg = context.createCGImage(output, from: output.extent) {
+                    
+                    let newImage = UIImage(cgImage: cgimg, scale: inputImage.scale, orientation: inputImage.imageOrientation)
+                    //                    let processedImage = UIImage(cgImage: cgimg)
+                    return newImage
+                }
+            }
+        }
+        return UIImage()
+
+        
+        
+        
+//        print("editImage")
+//        let beginImage = CIImage(image: inputImage)
+//        let filter = CIFilter(name: "CISepiaTone")
+//        filter?.setValue(beginImage, forKey: kCIInputImageKey)
+//        filter?.setValue(0.8, forKey: kCIInputIntensityKey)
+//        
+//        let newImage = UIImage(ciImage: filter!.outputImage!, scale: inputImage.scale, orientation: inputImage.imageOrientation)
+//
+////        let newImage = UIImage(ciImage: (filter?.outputImage)!)
+//        
+//        
+//        return newImage
+    }
+    
+    
+    
+    
+    
     /// Applies a blur effect to the image
     ///
     /// - parameter inputImage: UIImage that you with to apply the blur effect to
@@ -49,12 +90,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         if let filter = CIFilter(name: "CICrystallize") {
             filter.setValue(inputCIImage, forKey: kCIInputImageKey)
-            filter.setValue(20, forKey: kCIInputRadiusKey)
+            filter.setValue(40, forKey: kCIInputRadiusKey)
             
             if let output = filter.outputImage {
                 if let cgimg = context.createCGImage(output, from: output.extent) {
-                    let processedImage = UIImage(cgImage: cgimg)
-                    return processedImage
+                    
+                    let newImage = UIImage(cgImage: cgimg, scale: inputImage.scale, orientation: inputImage.imageOrientation)
+//                    let processedImage = UIImage(cgImage: cgimg)
+                    return newImage
                 }
             }
         }
@@ -101,7 +144,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
    
     @IBAction func applyFilterButton(_ sender: UIButton) {
         if photoImageView.image != nil {
-            photoImageView.image = imageCrystallize(inputImage: photoImageView.image!)
+            photoImageView.image = imageSepina(inputImage: photoImageView.image!)
         } else {
             let alert = UIAlertController(title: "Alert", message: "No image was selected", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Got it", style: .default, handler: nil))
@@ -116,7 +159,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
-            imagePicker.allowsEditing = true
+//            imagePicker.allowsEditing = true
             imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
             present(imagePicker, animated: true, completion: nil)
         }
@@ -124,10 +167,23 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        var chosenImage = UIImage()
-        chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        photoImageView.image = chosenImage
-        self.dismiss(animated: true, completion: nil);
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            photoImageView.image = image
+        } else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            photoImageView.image = image
+        } else {
+            dismiss(animated: true, completion: nil)
+            photoImageView.image = nil
+            let alert = UIAlertController(title: "Alert", message: "Unsupported file, please pick an image", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+        dismiss(animated: true, completion: nil)
+        
+//        var chosenImage = UIImage()
+//        chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        photoImageView.image = chosenImage
+//        self.dismiss(animated: true, completion: nil);
     }
     
     
